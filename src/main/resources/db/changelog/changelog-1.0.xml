@@ -1,0 +1,38 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    
+    <changeSet id="1" author="rentori">
+        <validCheckSum>8:6a6829c8456d3fb41c7c97c7fb397c25</validCheckSum>
+        <sqlFile path="db/changelog/sql.queries/create_users_table.sql"/>
+    </changeSet>
+
+    <changeSet id="2" author="rentori">
+        <validCheckSum>8:6a6829c8456d3fb41c7c97c7fb397c25</validCheckSum>
+        <sqlFile path="db/changelog/sql.queries/create_roles_table.sql"/>
+    </changeSet>
+
+    <changeSet id="3" author="rentori">
+        <validCheckSum>8:6a6829c8456d3fb41c7c97c7fb397c25</validCheckSum>
+        <sqlFile path="db/changelog/sql.queries/create_user_roles_table.sql"/>
+    </changeSet>
+
+    <changeSet id="4" author="rentori">
+        <validCheckSum>8:6a6829c8456d3fb41c7c97c7fb397c25</validCheckSum>
+        <sqlFile path="db/changelog/sql.queries/insert_into_roles.sql"/>
+    </changeSet>
+
+    <changeSet id="5" author="rentori">
+        <validCheckSum>8:6a6829c8456d3fb41c7c97c7fb397c25</validCheckSum>
+        <sqlFile path="db/changelog/sql.queries/insert_into_users.sql"/>
+    </changeSet>
+
+    <changeSet id="6" author="rentori">
+        <validCheckSum>8:6a6829c8456d3fb41c7c97c7fb397c25</validCheckSum>
+        <sqlFile path="db/changelog/sql.queries/insert_into_user_roles.sql"/>
+    </changeSet>
+    
+</databaseChangeLog>
+    
