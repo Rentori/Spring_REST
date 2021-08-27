@@ -13,8 +13,8 @@ import java.io.File;
 
 @Component
 public class AwsS3 {
-    private final String accessKey = "AKIAZYQLEUZ3HZVRUCGV";
-    private final String secretKey = "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";
+    private final String accessKey = "";
+    private final String secretKey = "";
     private final String bucketName = "springfiles";
     private final AmazonS3 s3client;
     
