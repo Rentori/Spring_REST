@@ -9,9 +9,13 @@ public interface UserService {
     
     List<User> getAll();
     
+    User save(User user);
+    
     User findByUsername(String username);
     
     User findById(Long id);
     
     void deleteUser(Long id);
+    
+    User updateUser(User entity);
 }

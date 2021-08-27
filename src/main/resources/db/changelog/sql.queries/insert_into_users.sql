@@ -1,2 +1,2 @@
 INSERT INTO users (username, password, email)
-values ('rentori', '$2a$04$kZ8a356owHDCELOS1359teBPx6TIEhZkrRTDeBlDhM88nLyjhWu2O', 'rentori@gmail.com')
+    value ('rentori', '$2a$12$0Z34t3sZgCU3f5eCDYmJTurTEIbV17fmSpRKejS77G2KPHQLiZ.na', 'rentori@gmail.com')

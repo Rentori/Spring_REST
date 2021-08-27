@@ -1,12 +1,10 @@
 package com.rentori.spring_rest.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
 @Data
@@ -29,4 +27,13 @@ public class User extends BaseEntity {
     joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
     inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
+
+    @OneToMany
+    @JoinTable(name = "events",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "file_id", referencedColumnName = "id")})
+    private List<File> files;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Event> events;
 }

@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,17 +31,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
-        Role roleUser = roleRepository.findByName("ROLE_USER");
+        Role roleUser = roleRepository.findByName("USER");
         List<Role> userRoles = new ArrayList<>();
+        userRoles.add(roleUser);
                 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(userRoles);
         user.setStatus(Status.ACTIVE);
+        user.setEmail(user.getEmail());
+        user.setCreated(new Date());
+        user.setUpdated(new Date());
         User registeredUser = userRepository.save(user);
         
         log.info("IN register - user: {} successfully registered", registeredUser);
         
         return registeredUser;
+    }
+
+    @Override
+    public User save(User user) {
+        userRepository.save(user);
+        
+        log.info("IN save - user: {} successfully registered", user.getUsername());
+        
+        return user;
     }
 
     @Override
@@ -62,13 +76,27 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Long id) {
         User result = userRepository.getById(id);
-        log.info("IN findById - user: {} found by id", result);
-        return null;
+        log.info("IN findById - user: {} found by id", result.getUsername());
+        return result;
     }
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        User user = userRepository.getById(id);
+        user.setUpdated(new Date());
+        user.setStatus(Status.DELETED);
+        userRepository.save(user);
         log.info("IN deleteById - user with id: {} successfully delete");
+    }
+    
+    @Override
+    public User updateUser(User entity) {
+        User user = userRepository.getById(entity.getId());
+        user.setUsername(entity.getUsername());
+        user.setUpdated(new Date());
+        user.setStatus(Status.UNDER_REVIEW);
+        log.info("IN updateUser - user: {} successfully update", entity.getUsername());
+        
+        return userRepository.save(user);
     }
 }
