@@ -32,6 +32,7 @@ public class FileServiceImpl implements FileService {
         this.awsS3 = awsS3;
     }
 
+    @Override
     public void setFileRepository(FileRepository fileRepository) {
         this.fileRepository = fileRepository;
     }

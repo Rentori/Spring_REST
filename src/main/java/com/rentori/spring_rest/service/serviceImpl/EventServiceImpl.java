@@ -19,7 +19,7 @@ import java.util.List;
 public class EventServiceImpl implements EventService {
     private final UserRepository userRepository;
     private final FileRepository fileRepository;
-    private final EventRepository eventRepository;
+    private EventRepository eventRepository;
 
     @Autowired
     public EventServiceImpl(UserRepository userRepository, 
@@ -27,6 +27,11 @@ public class EventServiceImpl implements EventService {
                             EventRepository eventRepository) {
         this.userRepository = userRepository;
         this.fileRepository = fileRepository;
+        this.eventRepository = eventRepository;
+    }
+
+    @Override
+    public void setEventRepository(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
 
